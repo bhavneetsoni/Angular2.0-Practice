@@ -1,4 +1,5 @@
 ﻿import { Component } from 'angular2/core';
+import { AuthorService } from './author.service';
 
 @Component({
     selector: 'authors',
@@ -9,9 +10,14 @@
 <li *ngFor = '#author of authors'>{{author}}</li>
 </ul>
 
-`
+`,
+    providers: [AuthorService]
 })
 
-export class AuthorsComponent{
+export class AuthorsComponent {
+    title: 'Authors of the Courses';
     authors;
+    constructor(authorService: AuthorService) {
+        this.authors = authorService.getAuthors();
+    }
 }
