@@ -23,6 +23,7 @@ System.register(['angular2/core', './authors.service'], function(exports_1, cont
         execute: function() {
             AuthorsComponent = (function () {
                 function AuthorsComponent(authorService) {
+                    this.title = "Authors of these courses are";
                     this.authors = authorService.getAuthors();
                 }
                 ;

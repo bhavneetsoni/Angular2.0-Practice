@@ -15,7 +15,7 @@ import { AuthorService } from './authors.service';
 })
 
 export class AuthorsComponent{
-    title : "Authors of these courses are"
+    title: string = "Authors of these courses are"
     authors;
     constructor(authorService: AuthorService) {
         this.authors = authorService.getAuthors();
