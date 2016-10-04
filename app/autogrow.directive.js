@@ -11,27 +11,38 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var CoursesComponent;
+    var AutoGrowDirective;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            CoursesComponent = (function () {
-                function CoursesComponent() {
+            AutoGrowDirective = (function () {
+                function AutoGrowDirective(el, renderer) {
+                    this.el = el;
+                    this.renderer = renderer;
                 }
-                CoursesComponent = __decorate([
-                    core_1.Component({
-                        selector: 'courses',
-                        template: "\n        '<h2>Courses</h2>'\n"
+                AutoGrowDirective.prototype.onFocus = function () {
+                    this.renderer.setElementStyle(this.el.nativeElement, 'width', '200px');
+                };
+                AutoGrowDirective.prototype.onBlur = function () {
+                    this.renderer.setElementStyle(this.el.nativeElement, 'width', '120px');
+                };
+                AutoGrowDirective = __decorate([
+                    core_1.Directive({
+                        selector: '[autoGrow]',
+                        host: {
+                            '(focus)': 'onFocus()',
+                            '(blur)': 'onBlur()'
+                        }
                     }), 
-                    __metadata('design:paramtypes', [])
-                ], CoursesComponent);
-                return CoursesComponent;
+                    __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
+                ], AutoGrowDirective);
+                return AutoGrowDirective;
             }());
-            exports_1("CoursesComponent", CoursesComponent);
+            exports_1("AutoGrowDirective", AutoGrowDirective);
         }
     }
 });
-//# sourceMappingURL=courses.compnent.js.map
+//# sourceMappingURL=autogrow.directive.js.map
